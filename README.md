@@ -20,7 +20,7 @@ With the source code and permissions ready to go, we can now start up the bot. D
 
 ### If you are experienced with the command line
 
-Navigate to the directory that contains `mokujin.py` and start the script with python: `python mokujin.py`. You should see a "success message" like `Logged in as <bot_name>`. The frame bot is now activated for your server.
+Install the required dependency `discord.py` with your preferred package manager. For example: `python -m pip install discord.py`. Navigate to the directory that contains `mokujin.py` and start the script with python: `python mokujin.py`. You should see a "success message" like `Logged in as <bot_name>`. The frame bot is now activated for your server. By default, the bot will only respond if the message was sent in an approved channel. You can modify the `CHANNELS` item in `config.py` to include the names of any channels in your server that the bot should be active in.
 
 ### If you are not experienced with the command line
 
@@ -28,11 +28,19 @@ Navigate to the directory that contains `mokujin.py` and start the script with p
 
 We will now instruct python to run our bot. We are going to have to use our computer's *terminal*, which is a text-based program that lets us interact with our computer directly. The recommended terminal program is called `PowerShell` and is likely already installed on your system. Open PowerShell and you will see a blue window with a text prompt. Our goal is to use PowerShell to navigate through our computer's filesystem and find the Framebot files we downloaded earlier, then to tell our computer to use python to run the framebot files.
 
-To ensure we have python installed properly, enter this command: `python --version`. You should see something like this: `Python 3.8.6`. If not, ensure that you downloaded and installed python (check #Prerequisites above). If you did, you may have to [add Python to your computer's PATH variable](https://thetechhacker.com/2021/01/23/add-python-path-to-windows-10/).  
+To ensure we have python installed properly, enter this command: `python --version`. You should see something like this: `Python 3.8.6`. If not, ensure that you downloaded and installed python (check #Prerequisites above). If you did, you may have to [add Python to your computer's PATH variable](https://thetechhacker.com/2021/01/23/add-python-path-to-windows-10/).  Note that the framebot requires Python 3.6 or higher.
 
-Next we will navigate to the bot code inside the terminal. Enter `cd` in the terminal to see your terminal's current location. Enter `ls` to see all files present at the terminal's current location. Based on the output of `ls`, determine which folder you need to navigate to (by default, the bot's files were probably placed into `Downloads`), and type `cd <folder_name>` (ex: `cd Downloads`). Use `ls` and `cd`until you see `mokujin.py` in your current directory.
+The framebot relies on an external library (or "package") called `discord.py` being available on your computer. To make this code available, you can use python's built-in package manager `pip`. Run the following command in your terminal to install the package: `python -m pip install discord.py`. You should see a bunch of messages that indicate that this external program is now available to python.
+
+Next we will navigate to the bot code inside the terminal. Enter `cd` in the terminal to see your terminal's current location. Enter `ls` to see all files present at the terminal's current location. Based on the output of `ls`, determine which folder you need to navigate to (by default, the bot's files were probably placed into `Downloads`), and type `cd <folder_name>` (ex: `cd Downloads`). Use `ls` and `cd` until you see `mokujin.py` in your current directory.
 
 Tell python to activate the bot: `python mokujin.py`. The bot will start running. You should see a "success message" like `Logged in as <bot_name>`. The frame bot is now activated for your server. Your terminal no longer accepts input, as it is busy running the bot. The bot is active only for as long as your terminal is open, and the bot will de-activate once you close the terminal or power off your computer.
+
+Note that the bot is configured, by default, to only respond to messages sent in an approved channel. You can open the file `config.py` in Notepad or any other text editor and modify the `CHANNELS` item to include the names of any channels you would like the bot to be active in. For example, if your server includes a channel called "frame-data", you can edit the line to appear as so:
+
+```
+CHANNELS = ["tekken", "raamikysely", "tekken-frames", "frame-data"]
+```
 
 ## Hosting The Bot
 If you want your bot to always be active, not just when you have it running on your own computer, you will need to activate the bot on a computer that is always available. If you want, you can just leave your computer on 24/7. But since that is inconvenient, it might be better to rent someone else's computer and tell the bot to run there. There are many such services, and they are all made very affordable (usually about 5 USD per month). Some services include those offered by [Linode](https://cloud.linode.com/linodes),  [AWS](https://aws.amazon.com/) (using their [EC2](https://aws.amazon.com/ec2/) service), Google Cloud, Microsoft Azure, and many others. All of these services will require that you sign up with a credit card.
